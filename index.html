@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Крипто-портфель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <main class="container">
+      <header class="topbar">
+        <div class="hero-card">
+          <div class="hero-content">
+            <p class="eyebrow">CoinGecko API · Real-time</p>
+            <h1>Крипто-портфель</h1>
+            <p class="hero-subtitle">
+              Живые цены и пересчёт по вашим количествам монет в одном экране.
+            </p>
+            <div class="hero-meta">
+              <span class="meta-chip">
+                Активов:
+                <strong id="assetsCount">0</strong>
+              </span>
+              <span class="meta-chip">
+                24ч PnL:
+                <strong id="dailyPnl">--</strong>
+              </span>
+              <span class="meta-chip">
+                Статус:
+                <strong id="marketStatus">Ожидание</strong>
+              </span>
+            </div>
+          </div>
+          <div class="total-card">
+            <p class="label">Общая стоимость</p>
+            <p class="total-value" id="totalValue">$0.00</p>
+            <p class="updated-at" id="updatedAt">Обновление: --:--:--</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Активы</h2>
+          <button id="refreshBtn" class="refresh-btn" type="button">Обновить цены</button>
+        </div>
+        <p class="hint">
+          Количество монет можно менять вручную, а цена и итоговый баланс подтягиваются из
+          CoinGecko динамически.
+        </p>
+
+        <div id="portfolioList" class="portfolio-list"></div>
+
+        <p class="error" id="errorBox" role="alert" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <template id="coinRowTemplate">
+      <article class="coin-row">
+        <div class="coin-left">
+          <img class="coin-icon" alt="" />
+          <div>
+            <div class="coin-title">
+              <span class="coin-symbol"></span>
+              <span class="coin-name"></span>
+            </div>
+            <div class="coin-price-line">
+              <span class="coin-price"></span>
+              <span class="coin-change"></span>
+            </div>
+          </div>
+        </div>
+        <div class="coin-right">
+          <label class="qty-label">
+            <span class="sr-only">Количество монет</span>
+            <input class="coin-amount-input" type="number" step="0.0001" min="0" />
+          </label>
+          <span class="coin-value"></span>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
